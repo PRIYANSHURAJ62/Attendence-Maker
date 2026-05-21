@@ -1,0 +1,297 @@
+:root {
+  --bg-color: #f9f9f9;
+  --text-color: #333;
+  --card-color: #fff;
+  --btn-bg: #007bff;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: all 0.3s ease;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: var(--card-color);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+nav a {
+  margin-left: 1rem;
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+/* make header nav flex */
+nav.top-nav {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* make subject select a flex item and center its content */
+#subjectSelect {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 140px;
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background: white;
+}
+
+main {
+  padding: 2rem;
+}
+
+.controls {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+input[type="text"] {
+  padding: 0.5rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  width: 60%;
+}
+
+button {
+  padding: 0.5rem 1rem;
+  background-color: var(--btn-bg);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: var(--card-color);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+th, td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+.status-btn {
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.present {
+  background-color: #28a745;
+}
+
+.absent {
+  background-color: #dc3545;
+}
+
+/* Theme Switch */
+.theme-switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+  margin-left: 1rem;
+}
+
+.theme-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0;
+  right: 0; bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 24px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px; width: 18px;
+  left: 3px; bottom: 3px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #007bff;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+/* Dark Theme */
+body.dark {
+  --bg-color: #1e1e1e;
+  --text-color: #f0f0f0;
+  --card-color: #2c2c2c;
+  --btn-bg: #0056b3;
+}
+
+/* smaller search box so new controls fit */
+#search {
+  width: 180px;
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+/* subject, date and time inputs */
+#subjectSelect, #calendar, #periods input, #markAll, #SectionSelect {
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background: white;
+}
+
+/* group for period inputs */
+#periods {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+/* reduce default input[type=time] width */
+#periods input[type="time"] {
+  width: 120px;
+  padding: 6px;
+  box-sizing: border-box;
+}
+
+/* small-screen tweaks */
+@media (max-width: 700px) {
+  #search { width: 140px; }
+  #periods input[type="time"] { width: 100px; }
+}
+
+/* nav button style */
+.nav-btn {
+  padding: 6px 10px;
+  background: var(--btn-bg);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* Settings panel (slide-in) */
+#settingsPanel {
+  position: fixed;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 320px;
+  background: var(--card-color);
+  box-shadow: -4px 0 12px rgba(0,0,0,0.15);
+  transform: translateX(100%);
+  transition: transform 0.25s ease;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+}
+#settingsPanel.open {
+  transform: translateX(0);
+}
+#settingsPanel .panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 1px solid #eee;
+}
+#settingsPanel .panel-body {
+  padding: 1rem;
+  overflow-y: auto;
+  flex: 1;
+}
+#settingsPanel .add-student {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 1rem;
+}
+#settingsPanel .add-student input {
+  flex: 1;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+#settingsPanel ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+#settingsPanel li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 6px;
+  border-bottom: 1px solid #f0f0f0;
+}
+#settingsPanel .remove-btn {
+  background: #dc3545;
+  color: #fff;
+  border: none;
+  padding: 6px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* helper hidden class */
+.hidden {
+  display: none !important;
+}
+
+#appFooter {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--card-color);
+  padding: 10px 16px;
+  box-shadow: 0 -2px 8px rgba(0,0,0,0.06);
+  display: flex;
+  justify-content: center;
+  z-index: 900;
+}
+#appFooter button {
+  padding: 8px 14px;
+  border-radius: 8px;
+  background: var(--btn-bg);
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+#logo{
+  padding: 8px;
+  margin: 8px;
+  height: 50px;
+
+}
